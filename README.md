@@ -56,3 +56,17 @@ As a user
 If I want list a restaurant
 I must provide a name
 ```
+
+### Setup
+
+Run bundle to install gems
+
+`bundle`
+
+Create the databases
+
+`rake db:setup`
+
+Migrate the table schema
+
+`rake db:migrate`
