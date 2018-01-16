@@ -10,7 +10,6 @@ RSpec.feature "Adding a new restaurant", type: :feature do
     fill_in 'restaurant[name]', with: "The Ivy"
     fill_in 'restaurant[description]', with: "Haute cuisine served in a poncy city setting"
     click_button "Save Restaurant"
-    expect(current_path).to eq "/restaurants"
     expect(page).to have_content "The Ivy"
 
     end
