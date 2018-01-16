@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+
+  def index
+    @restaurants = Restaurant.all 
+  end
+
   def show
     @restaurant = Restaurant.find(params[:id])
   end
@@ -7,7 +12,6 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    # render plain: params[:restaurant].inspect
     @restaurant = Restaurant.new(restaurant_params)
 
     @restaurant.save
