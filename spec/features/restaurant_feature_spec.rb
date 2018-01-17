@@ -32,7 +32,6 @@ end
 RSpec.feature "Page change buttons", type: :feature do
 
   scenario "Back button from single view returns restaurants list" do
-    visit new_restaurant_path
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     click_on("Back")
     expect(current_path).to eq restaurants_path
@@ -51,10 +50,16 @@ RSpec.feature "Page change buttons", type: :feature do
   end
 
   scenario "Edit button from the current restaurant path" do
-    visit new_restaurant_path
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     visit restaurants_path
     click_on("Edit")
     expect(current_path).to eq '/restaurants/6/edit'
+  end
+end
+
+RSpec.feature "Delete restaurant", type: :feature do
+  scenario "User can delete a restaurant" do
+    expect{ add_and_destroy_restaurant(name: "McDonalds", description: "Fast food") }.to change {Restaurant.count}.by 0
+    expect(page).not_to have_content("McDonalds")
   end
 end

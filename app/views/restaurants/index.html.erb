@@ -1,4 +1,3 @@
-
 <h1>Listing restaurants</h1>
 
 
@@ -16,6 +15,9 @@
       <td><%= restaurant.description %></td>
       <td><%= link_to 'Show', restaurants_path(restaurant) %></td>
       <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+      <td><%= link_to 'Delete', restaurant_path(restaurant),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

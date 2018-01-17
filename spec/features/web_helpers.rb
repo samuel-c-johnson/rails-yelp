@@ -8,4 +8,10 @@ module Helpers
     click_button "Save Restaurant"
   end
 
+  def add_and_destroy_restaurant(name: name, description: description)
+    add_restaurant(name: name, description: description)
+    visit restaurants_path
+    click_on "Delete"
+  end
+
 end
