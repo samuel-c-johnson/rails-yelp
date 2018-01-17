@@ -22,7 +22,7 @@ RSpec.feature "Displaying all restaurants", type: :feature do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     add_restaurant(name: "Hakkasan", description: "Colourful sushi")
 
-    visit restaurants_path
+    visit '/restaurants'
 
     expect(page).to have_content "The Ivy"
     expect(page).to have_content "Hakkasan"
@@ -34,11 +34,11 @@ RSpec.feature "Page change buttons", type: :feature do
   scenario "Back button from single view returns restaurants list" do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     click_on("Back")
-    expect(current_path).to eq restaurants_path
+    expect(current_path).to eq '/restaurants'
   end
 
   scenario "New restaurant button" do
-    visit restaurants_path
+    visit '/restaurants'
     click_on("New restaurant")
     expect(current_path).to eq new_restaurant_path
   end
@@ -46,12 +46,12 @@ RSpec.feature "Page change buttons", type: :feature do
   scenario "Back button from the new restaurant path" do
     visit new_restaurant_path
     click_on("Back")
-    expect(current_path).to eq restaurants_path
+    expect(current_path).to eq '/restaurants'
   end
 
   scenario "Edit button from the current restaurant path" do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
-    visit restaurants_path
+    visit '/restaurants'
     click_on("Edit")
     expect(current_path).to eq '/restaurants/6/edit'
   end
