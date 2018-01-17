@@ -6,6 +6,15 @@ RSpec.feature "Adding a new restaurant", type: :feature do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     expect(page).to have_content "The Ivy"
   end
+
+  scenario "Restaurant count increases by 1 in database" do
+    expect { add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting") }.to change {Restaurant.count}.by 1
+  end
+
+  scenario "Restaurant count doesn't increase when no name given" do
+    expect{ add_restaurant(name: nil, description: "Haute cuisine served in a poncy city setting") }.not_to change {Restaurant.count}
+    expect { add_restaurant(name: nil, description: "Haute cuisine served in a poncy city setting") }.to raise_error
+  end
 end
 
 RSpec.feature "Displaying all restaurants", type: :feature do
