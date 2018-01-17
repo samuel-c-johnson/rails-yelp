@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Restaurant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "raises an error when the name is blank" do
+    restaurant = Restaurant.new
+    restaurant.name = nil
+    restaurant.valid?
+    restaurant.errors[:name].should include("can't be blank")
+  end
 end
