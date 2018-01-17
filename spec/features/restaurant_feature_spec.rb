@@ -13,7 +13,6 @@ RSpec.feature "Adding a new restaurant", type: :feature do
 
   scenario "Restaurant count doesn't increase when no name given" do
     expect{ add_restaurant(name: nil, description: "Haute cuisine served in a poncy city setting") }.not_to change {Restaurant.count}
-    # expect { add_restaurant(name: nil, description: "Haute cuisine served in a poncy city setting") }.to raise_error
   end
 end
 
@@ -49,6 +48,13 @@ RSpec.feature "Page change buttons", type: :feature do
     visit new_restaurant_path
     click_on("Back")
     expect(current_path).to eq restaurants_path
+  end
 
+  scenario "Edit button from the current restaurant path" do
+    visit new_restaurant_path
+    add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
+    visit restaurants_path
+    click_on("Edit")
+    expect(current_path).to eq '/restaurants/6/edit'
   end
 end
