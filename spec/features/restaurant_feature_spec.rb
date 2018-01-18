@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Adding a new restaurant", type: :feature do
 
+  before(:each) do
+    sign_up(email: "sam_the_man@example.com", password: "555555", password2: "555555")
+  end
+
   scenario "User can add a new resturant" do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     expect(page).to have_content "The Ivy"
@@ -18,6 +22,10 @@ end
 
 RSpec.feature "Displaying all restaurants", type: :feature do
 
+  before(:each) do
+    sign_up(email: "sam_the_man@example.com", password: "555555", password2: "555555")
+  end
+
   scenario "User can add a new resturant" do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
     add_restaurant(name: "Hakkasan", description: "Colourful sushi")
@@ -30,6 +38,10 @@ RSpec.feature "Displaying all restaurants", type: :feature do
 end
 
 RSpec.feature "Page change buttons", type: :feature do
+
+  before(:each) do
+    sign_up(email: "sam_the_man@example.com", password: "555555", password2: "555555")
+  end
 
   scenario "Back button from single view returns restaurants list" do
     add_restaurant(name: "The Ivy", description: "Haute cuisine served in a poncy city setting")
@@ -58,6 +70,11 @@ RSpec.feature "Page change buttons", type: :feature do
 end
 
 RSpec.feature "Delete restaurant", type: :feature do
+
+  before(:each) do
+    sign_up(email: "sam_the_man@example.com", password: "555555", password2: "555555")
+  end
+  
   scenario "User can delete a restaurant" do
     expect{ add_and_destroy_restaurant(name: "McDonalds", description: "Fast food") }.to change {Restaurant.count}.by 0
     expect(page).not_to have_content("McDonalds")
