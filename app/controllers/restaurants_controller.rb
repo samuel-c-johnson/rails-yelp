@@ -1,3 +1,5 @@
+require 'pry'
+
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    # binding.pry
   end
 
   def new
@@ -17,7 +20,6 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
     if @restaurant.save
       redirect_to @restaurant
     else
