@@ -11,9 +11,7 @@
     </p>
 
 
-<p>
-  <h1><%= @restaurant.name %></h1>
-</p>
+
 
 
     <p>
@@ -21,9 +19,15 @@
     </p>
     <br>
 
+    <% if user_signed_in? %>
+     <% if @restaurant.user_id != current_user.id %>
+     <h2>Add a review:</h2>
+       <%= render 'reviews/form' %>
+     <% end %>
+    <% end %>
 
-    <h2>Add a review:</h2>
-      <%= render 'reviews/form' %>
+
+
       <%= link_to 'Back', restaurants_path %>
 
       <% if user_signed_in? %>
