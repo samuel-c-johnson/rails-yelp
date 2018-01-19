@@ -10,11 +10,15 @@
 
 <h2>Add a review:</h2>
   <%= render 'reviews/form' %>
+  <%= link_to 'Back', restaurants_path %>
+  <% if user_signed_in? %>
 
-<%= link_to 'Back', restaurants_path %> |
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
+ <% if @restaurant.user_id == current_user.id %>
+  | <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+    <%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
         data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <% end %>
 
 
 <% if @restaurant.reviews.count > 0 %>

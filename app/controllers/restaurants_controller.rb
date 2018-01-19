@@ -12,14 +12,15 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+
+    @restaurant = current_user.restaurants.build
   end
 
   def edit
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+  @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else
@@ -43,7 +44,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description)
+    params.require(:restaurant).permit(:name, :description, :user)
   end
 
   def find_restaurant

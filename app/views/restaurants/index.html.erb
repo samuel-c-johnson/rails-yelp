@@ -18,10 +18,15 @@
           <td><h2><%= link_to r.name, restaurant_path(r) %></h2></td>
           <td><%= r.description %></td>
           <td><%= link_to 'Show', restaurant_path(r) %></td>
-          <td><%= link_to 'Edit', edit_restaurant_path(r) %></td>
-          <td><%= link_to 'Delete', restaurant_path(r),
+          <% if user_signed_in? %>
+
+         <% if r.user_id == current_user.id %>
+            <td><%= link_to 'Edit', edit_restaurant_path(r) %></td>
+            <td><%= link_to 'Delete', restaurant_path(r),
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% end %>
         </tr>
       <% end %>
     </table>
