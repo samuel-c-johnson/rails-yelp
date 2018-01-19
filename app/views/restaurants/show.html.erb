@@ -19,28 +19,5 @@
 
 <% if @restaurant.reviews.count > 0 %>
   <h3>Reviews</h3>
-  <% @restaurant.reviews.each do |review| %>
-    <% if review.persisted? %>
-      <p>
-        <strong>Commenter:</strong>
-        <%= review.commenter %>
-      </p>
-
-      <p>
-        <strong>Review:</strong>
-        <%= review.body %>
-      </p>
-
-      <p>
-        <strong>Rating:</strong>
-        <%= review.rating %>
-      </p>
-
-      <p>
-        <%= link_to 'Delete review', [review.restaurant, review],
-                     method: :delete,
-                     data: { confirm: 'Are you sure?' } %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= render @restaurant.reviews.select(&:persisted?) %>
 <% end %>
