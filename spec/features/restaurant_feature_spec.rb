@@ -51,7 +51,7 @@ RSpec.feature "Page change buttons", type: :feature do
 
   scenario "New restaurant button" do
     visit '/restaurants'
-    click_on("New restaurant")
+    click_on("New Restaurant")
     expect(current_path).to eq new_restaurant_path
   end
 
@@ -74,7 +74,7 @@ RSpec.feature "Delete restaurant", type: :feature do
   before(:each) do
     sign_up(email: "sam_the_man@example.com", password: "555555", password2: "555555")
   end
-  
+
   scenario "User can delete a restaurant" do
     expect{ add_and_destroy_restaurant(name: "McDonalds", description: "Fast food") }.to change {Restaurant.count}.by 0
     expect(page).not_to have_content("McDonalds")
