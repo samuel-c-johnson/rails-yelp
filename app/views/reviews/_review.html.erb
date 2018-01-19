@@ -1,9 +1,4 @@
 <p>
-  <strong>Commenter:</strong>
-  <%= review.commenter %>
-</p>
-
-<p>
   <strong>Review:</strong>
   <%= review.body %>
 </p>
@@ -14,7 +9,11 @@
 </p>
 
 <p>
-  <%= link_to 'Delete review', [review.restaurant, review],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+  <% if user_signed_in? %>
+    <% if review.user_id == current_user.id %>
+      <%= link_to 'Delete review', [review.restaurant, review],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
 </p>
