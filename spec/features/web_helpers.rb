@@ -13,15 +13,14 @@ module Helpers
     click_on "Delete"
   end
 
-  def add_a_review(commenter: commenter, body: body, rating: rating)
-    fill_in 'review[commenter]', with: commenter
+  def add_a_review(body: body, rating: rating)
     fill_in 'review[body]', with: body
     fill_in 'review[rating]', with: rating
     click_on "Create Review"
   end
 
-  def add_and_destroy_review(commenter: commenter, body: body, rating: rating)
-    add_a_review(commenter: commenter, body: body, rating: rating)
+  def add_and_destroy_review(body: body, rating: rating)
+    add_a_review(body: body, rating: rating)
     click_on 'Delete review'
   end
 

@@ -5,7 +5,7 @@ RSpec.feature "Create review", type: :feature do
 
   scenario "User can make a review" do
     add_restaurant(name: "Varun's Veranda", description: 'Flaymboyant host')
-    expect{ add_a_review(commenter: 'Sam', body: 'Intriguing flavours', rating: 4) }.to change {Review.count}.by 1
+    expect{ add_a_review(body: 'Intriguing flavours', rating: 4) }.to change {Review.count}.by 1
     expect(page).to have_content("Intriguing flavours")
   end
 end

@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  has_many :restaurants 
+  has_many :restaurants
+  has_many :reviews
 end
