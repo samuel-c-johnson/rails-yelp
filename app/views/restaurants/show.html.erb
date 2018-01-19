@@ -1,27 +1,37 @@
-<p>
-  <h1><%= @restaurant.name %></h1>
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>
+      <h1><%= @restaurant.name %></h1>
+    </p>
 
-<p>
-  <h2><%= @restaurant.description %></h3>
-</p>
-<br>
-
-
-<h2>Add a review:</h2>
-  <%= render 'reviews/form' %>
-  <%= link_to 'Back', restaurants_path %>
-
-  <% if user_signed_in? %>
-   <% if @restaurant.user_id == current_user.id %>
-    | <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-      <%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
-          data: { confirm: "Are you sure?" } %>
-   <% end %>
-  <% end %>
+    <p>
+      <h2><%= @restaurant.description %></h3>
+    </p>
+    <br>
 
 
-<% if @restaurant.reviews.count > 0 %>
-  <h3>Reviews</h3>
-  <%= render @restaurant.reviews.select(&:persisted?) %>
-<% end %>
+    <h2>Add a review:</h2>
+      <%= render 'reviews/form' %>
+      <%= link_to 'Back', restaurants_path %>
+
+      <% if user_signed_in? %>
+       <% if @restaurant.user_id == current_user.id %>
+        | <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+          <%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
+              data: { confirm: "Are you sure?" } %>
+       <% end %>
+      <% end %>
+
+
+    <% if @restaurant.reviews.count > 0 %>
+      <h3>Reviews</h3>
+      <%= render @restaurant.reviews.select(&:persisted?) %>
+    <% end %>
+
+  </body>
+</html>
