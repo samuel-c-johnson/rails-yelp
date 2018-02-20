@@ -1,4 +1,80 @@
-## rails_yelp
+# Yelp
+
+## Description
+
+This is a clone of the restaurant listings website Yelp, built using rails. Features include user sign up / sign in / sign out, list restaurants and review them. See more about my [design process](#design-process).
+
+
+## Setup
+
+Check that you have ruby installed
+
+`ruby -v`
+
+If not, install instructions can be found [here](https://www.ruby-lang.org/en/documentation/installation/).
+
+Clone the repo on the command line by running
+
+`git clone git@github.com:ewintram/rails-yelp.git`
+
+Check that you have bundler installed
+
+`bundler -v`
+
+If not, install by running
+
+`gem install bundler`
+
+Install dependencies by running
+
+`bundle`
+
+Create the databases by running
+
+`rake db:setup`
+
+Migrate the table schema by running
+
+`rake db:migrate`
+
+
+## Usage
+
+To launch the app, run
+
+`rails s`
+
+
+Navigate to `http://localhost:3000`
+
+(screen grabs)
+
+
+## Running tests
+
+Testing is in RSpec and Capybara. To run the tests on the command line, run
+
+`rspec`
+
+
+## Authors
+
+[Sam Johnson](https://github.com/samuel-c-johnson)
+
+[Varun Madhukara](https://github.com/VarunCodes)
+
+[Lan Pham](https://github.com/Albion31)
+
+Eleanor Wintram
+
+
+## Design process
+
+*Database table structure*
+
+![Database table structure](/public/yelp-database-structure.png "Database tables structure")
+
+### User stories
 
 *Step 1 - MVP*
 ```
@@ -39,12 +115,6 @@ I want to access a list of restaurants with individual comments
 
 ```
 As a user
-So I can decide which restaurant to visit
-I want to access a list of restaurants with average rating
-```
-
-```
-As a user
 If I want to provide a review
 I must leave a rating out of 5
 ```
@@ -81,18 +151,6 @@ So that I can identify the reviewer
 I want to see the email address of the reviewer
 ```
 
-```
-As a user
-To avoid conflict of interest
-I cannot review restaurants that I have created
-```
-
-```
-As a user
-So that I can sign up more easily
-I want to be able to log in through social media
-```
-
 *Step 3 - Setting limits on users*
 
 ```
@@ -119,16 +177,24 @@ So that I can update my review
 I can edit or delete my reviews
 ```
 
-### Setup
+```
+As a user
+To avoid conflict of interest
+I cannot review restaurants that I have created
+```
 
-Run bundle to install gems
+### Still to implement
 
-`bundle`
+#### User stories
 
-Create the databases
+```
+As a user
+So that I can sign up more easily
+I want to be able to log in through social media
+```
 
-`rake db:setup`
-
-Migrate the table schema
-
-`rake db:migrate`
+```
+As a user
+So I can decide which restaurant to visit
+I want to access a list of restaurants with average rating
+```
